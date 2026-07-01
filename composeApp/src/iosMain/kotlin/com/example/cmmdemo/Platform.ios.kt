@@ -1,4 +1,4 @@
-package org.example.cmmdemo
+package com.example.cmmdemo
 
 import com.example.cmmdemo.Platform
 import platform.UIKit.UIDevice
@@ -8,3 +8,6 @@ class IOSPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()
+
+actual fun nativeCameraAccess() {
+}
