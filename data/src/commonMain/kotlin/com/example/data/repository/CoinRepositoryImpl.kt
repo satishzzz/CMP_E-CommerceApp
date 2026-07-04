@@ -1,4 +1,10 @@
 package com.example.data.repository
 
-class CoinRepositoryImpl {
+import com.example.data.data_source.RemoteDataSource
+import com.example.domain.repository.coin_list.CoinRepository
+
+class CoinRepositoryImpl(val apiService: RemoteDataSource): CoinRepository {
+    override suspend fun getCoins() {
+      apiService.getCoinListing()
+    }
 }
