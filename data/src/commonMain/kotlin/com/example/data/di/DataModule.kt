@@ -1,5 +1,8 @@
 package com.example.data.di
 
+import com.example.data.data_source.RemoteDataSource
+import com.example.data.repository.AuthRepositoryImpl
+import com.example.data.repository.CoinRepositoryImpl
 import com.example.domain.repository.auth.AuthRepository
 import com.example.domain.repository.coin_list.CoinRepository
 import io.ktor.client.HttpClient
@@ -39,14 +42,10 @@ val dataModule = module {
     single { RemoteDataSource(httpClient = get<HttpClient>(), get()) }
 
     single<AuthRepository> {
-        ListingRepositoryImpl(
-            get<RemoteDataSource>()
-        )
+        AuthRepositoryImpl(get<RemoteDataSource>())
     }
 
     single<CoinRepository> {
-        UserRepositoryImp(
-            get<RemoteDataSource>()
-        )
+        CoinRepositoryImpl(get<RemoteDataSource>())
     }
 }

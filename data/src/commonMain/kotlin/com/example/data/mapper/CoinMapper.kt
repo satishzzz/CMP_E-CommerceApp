@@ -11,7 +11,7 @@ object CoinMapper {
         )
     }
 
-    fun toCoinDetailModel(){
-
+    fun toDomain(dtos: List<CoinDto>): List<CoinListModel> {
+        return dtos.map { toCoinListModel(it) }
     }
 }
