@@ -125,5 +125,5 @@ shared/
 - Kotlin Coroutines
 - StateFlow
 - Kotlinx Serialization
-- Navigation (Compose Navigation or Voyager, if applicable)
-- Dependency Injection (Koin, if applicable)
+- Navigation (Compose Navigation3)
+- Dependency Injection (KOIN)
