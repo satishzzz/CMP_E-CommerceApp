@@ -9,10 +9,11 @@ class CoinRepositoryImpl(val apiService: RemoteDataSource) : CoinRepository {
     override suspend fun getCoins(): Result<List<CoinListModel>> {
         val dtos = apiService.getCoinListing()
         if (dtos.isSuccess) {
-            val listings = dtos.getOrNull()!!.listings
+            val listings = dtos.getOrNull()!!
             val models = CoinMapper.toDomain(listings)
             return Result.success(models)
         } else {
+            print("RESPONSE-> 2"+dtos.exceptionOrNull()!!)
             throw dtos.exceptionOrNull()!!
         }
 
