@@ -1,31 +1,129 @@
-This is a Compose Multiplatform project targeting Android, iOS.
+## 🏗️ Architecture
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+This project follows **Clean Architecture** with the **MVVM (Model-View-ViewModel)** pattern to build a scalable, maintainable, and platform-independent application (Android & iOS) using **Compose Multiplatform**.
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+The architecture separates the application into three distinct layers, ensuring a clear separation of responsibilities and making the codebase easier to test, extend, and maintain.
 
-### Running the apps
+### 📱 UI Layer
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+The UI layer is built with **Compose Multiplatform** and is responsible for rendering the user interface and handling user interactions.
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+Responsibilities:
+- Displays application data
+- Collects user input
+- Observes UI state from the ViewModel
+- Sends user events to the ViewModel
+- Contains composable screens and reusable UI components
 
-### Running tests
+### ⚙️ Domain Layer
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
+The domain layer contains the core business logic of the application and remains completely independent of any platform or framework.
 
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
+Responsibilities:
+- Business use cases
+- Repository interfaces
+- Domain models
+- Business rules
+
+This layer has no dependency on the UI or Data layers, making it highly reusable and easy to test.
+
+### 🌐 Data Layer
+
+The data layer is responsible for fetching, processing, and providing data to the domain layer.
+
+Responsibilities:
+- Repository implementations
+- Remote API communication using **Ktor**
+- DTOs (Data Transfer Objects)
+- Mapping DTOs to domain models
+- Error handling and data transformation
 
 ---
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## 🔄 Application Flow
+
+```text
+Compose UI
+     │
+     ▼
+ViewModel
+     │
+     ▼
+Use Case
+     │
+     ▼
+Repository Interface
+     │
+     ▼
+Repository Implementation
+     │
+     ▼
+Ktor API Client
+     │
+     ▼
+Remote API
+     │
+     ▼
+DTO → Domain Mapper
+     │
+     ▼
+Domain Model
+     │
+     ▼
+ViewModel updates UI State
+     │
+     ▼
+Compose UI recomposes
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+shared/
+├── data/
+│   ├── remote/
+│   ├── repository/
+│   ├── dto/
+│   └── mapper/
+│
+├── domain/
+│   ├── model/
+│   ├── repository/
+│   └── usecase/
+│
+└── presentation/
+    ├── screen/
+    ├── components/
+    ├── state/
+    └── viewmodel/
+```
+
+---
+
+## ✨ Why Clean Architecture?
+
+- Clear separation of concerns
+- Platform-independent business logic
+- Easier testing and debugging
+- Scalable project structure
+- Reusable domain layer
+- Easier maintenance
+- Improved code readability
+- Flexible data source replacement
+
+---
+
+## 🛠️ Tech Stack
+
+- Kotlin
+- Compose Multiplatform
+- MVVM Architecture
+- Clean Architecture
+- Ktor Client
+- Kotlin Coroutines
+- StateFlow
+- Kotlinx Serialization
+- Navigation (Compose Navigation or Voyager, if applicable)
+- Dependency Injection (Koin, if applicable)
