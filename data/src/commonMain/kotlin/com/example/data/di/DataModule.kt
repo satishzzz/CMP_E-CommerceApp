@@ -1,5 +1,8 @@
 package com.example.data.di
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import com.example.data.data_source.CacheDataSource
 import com.example.data.data_source.RemoteDataSource
 import com.example.data.repository.AuthRepositoryImpl
 import com.example.data.repository.CoinRepositoryImpl
@@ -40,6 +43,7 @@ val dataModule = module {
     }
 
     single { RemoteDataSource(httpClient = get<HttpClient>(), get()) }
+    single { CacheDataSource(dataStore = get<DataStore<Preferences>>()) }
 
     single<AuthRepository> {
         AuthRepositoryImpl(get<RemoteDataSource>())
