@@ -1,4 +1,4 @@
-rootProject.name = "CMPDemo"
+rootProject.name = "CMP_E-CommerceApp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

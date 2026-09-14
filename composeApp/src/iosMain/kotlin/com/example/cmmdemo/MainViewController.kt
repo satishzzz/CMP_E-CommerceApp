@@ -1,4 +1,4 @@
-package org.example.cmmdemo
+package com.example.cmmdemo
 
 import androidx.compose.ui.window.ComposeUIViewController
 
