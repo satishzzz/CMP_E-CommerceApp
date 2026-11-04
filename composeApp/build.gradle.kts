@@ -19,7 +19,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "Shared"
             isStatic = true
         }
     }
@@ -50,9 +50,6 @@ kotlin {
             //coil lib
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor3)
-            implementation(libs.koin.compose.navigation3)
-            implementation(libs.jetbrains.navigation3.ui)
-            implementation(libs.jetbrains.lifecycle.viewmodel.nav3)
             implementation(libs.jetbrains.lifecycle.viewmodel)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.androidx.datastore)

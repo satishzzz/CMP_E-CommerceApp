@@ -1,5 +1,5 @@
 [versions]
-agp = "8.11.2"
+agp = "8.13.2"
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
@@ -7,25 +7,26 @@ androidx-activity = "1.11.0"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.17.0"
 androidx-espresso = "3.7.0"
-androidx-lifecycle = "2.9.5"
+#androidx-lifecycle = "2.9.0"
+androidx-lifecycle = "2.8.4"
 androidx-testExt = "1.3.0"
-composeMultiplatform = "1.9.1"
+composeMultiplatform = "1.7.3"
 junit = "4.13.2"
-kotlin = "2.2.20"
-kotlinStdlib = "2.2.20"
+kotlin = "2.1.20"
+kotlinStdlib = "2.1.20"
 runner = "1.7.0"
 core = "1.7.0"
 coroutines = "1.10.2"
-koin = "4.1.1"
-koin-compose = "4.1.1"
+koin = "4.0.0"
+koin-compose = "4.0.0"
 materialIconsExtended = "1.7.3"
-ktorClientOkhttp = "3.3.3"
-kotlinxSerializationJson = "1.9.0"
+ktorClientOkhttp = "3.0.3"
+kotlinxSerializationJson = "1.8.0"
 material = "1.14.0"
 
-coilCompose = "3.3.0"
-navigation = "1.1.1"
-datastore = "1.2.1"
+coilCompose = "3.0.4"
+navigation = "1.1.2"
+datastore = "1.1.2"
 
 [libraries]
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
@@ -68,7 +69,6 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", ver
 jetbrains-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "navigation" }
 jetbrains-lifecycle-viewmodel-nav3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "androidx-lifecycle" }
 jetbrains-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle"}
-koin-compose-navigation3 = { module = "io.insert-koin:koin-compose-navigation3", version.ref = "koin-compose" }
 
 #DataStore
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
